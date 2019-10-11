@@ -51,14 +51,13 @@ if [[ $EUID -ne 0 ]]; then
     exit 1;
 fi
 
-wget -O /tmp/setupSwap.main.sh https://raw.githubusercontent.com/katak-nyulink/create-swap-from-bash-script/master/setupSwap.main.sh?token=ADD54E4KMDZWHOC5PCKIQHK5UBDD2
-chmod +x setupSwap.main.sh
+wget -O /tmp/setupSwap.main.sh https://raw.githubusercontent.com/katak-nyulink/create-swap-from-bash-script/master/setupSwap.main.sh
 
 #load code functions
-source setupSwap.main.sh
+source /tmp/setupSwap.main.sh
 
 #setup permissions for functions
-chmod 500 setupSwap.main.sh
+chmod +x 500 /tmp/setupSwap.main.sh
 
 echo ""
 echo "--------------------------------------------------------------------------"
