@@ -138,6 +138,33 @@ createSwap() {
         echo "/swapfile swap swap defaults 0 0" >> /etc/fstab    
     fi
 
+    #Tweak your Swap Settings
+    #There are a few options that you can configure that will have an impact on your system’s performance when dealing with swap.
+    sysctlBackupTime=$(date +%y-%m-%d--%H-%M-%S)
+    if grep -q "swappiness" /etc/sysctl.conf; then
+        echo "-> The sysctl contains a swappiness entry."
+        #do nothing
+    else
+        cp /etc/sysctl.conf /etc/sysctl.$sysctlBackupTime
+        echo "-> The sysctl does not contain a swappiness. Adding an entry."
+        #For instance, to set the swappiness to 10
+        sysctl vm.swappiness=10
+        #This setting will persist until the next reboot. We can set this value automatically at restart by adding the line to our /etc/sysctl.conf file:
+        echo "vm.swappiness=10" >> /etc/sysctl   
+    fi
+    
+    if grep -q "vfs_cache_pressure" /etc/sysctl.conf; then
+        echo "-> The sysctl contains a cache pressure entry."
+        #do nothing
+    else
+        cp /etc/sysctl.conf /etc/sysctl.$sysctlBackupTime
+        echo "-> The sysctl does not contain a cache pressure entry. Adding an entry."
+        #For instance, to set the vfs_cache_pressure to 50
+        sysctl vm.vfs_cache_pressure=50
+        #This setting will persist until the next reboot. We can set this value automatically at restart by adding the line to our /etc/sysctl.conf file: 
+        echo "vm.vfs_cache_pressure=50" >> /etc/sysctl
+    fi
+    
     echo ""
     echo "--> Done"
     echo ""
