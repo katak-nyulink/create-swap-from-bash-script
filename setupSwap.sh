@@ -51,6 +51,8 @@ if [[ $EUID -ne 0 ]]; then
     exit 1;
 fi
 
+chmod +x setupSwap.main.sh
+
 #load code functions
 source setupSwap.main.sh
 
