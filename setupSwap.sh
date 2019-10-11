@@ -57,7 +57,7 @@ wget -O /tmp/setupSwap.main.sh https://raw.githubusercontent.com/katak-nyulink/c
 source /tmp/setupSwap.main.sh
 
 #setup permissions for functions
-chmod +x 500 /tmp/setupSwap.main.sh
+chmod 500 +x /tmp/setupSwap.main.sh
 
 echo ""
 echo "--------------------------------------------------------------------------"
