@@ -53,11 +53,11 @@ fi
 
 wget -O /tmp/setupSwap.main.sh https://raw.githubusercontent.com/katak-nyulink/create-swap-from-bash-script/master/setupSwap.main.sh
 
-#load code functions
-source /tmp/setupSwap.main.sh
-
 #setup permissions for functions
 chmod 500 +x /tmp/setupSwap.main.sh
+
+#load code functions
+source /tmp/setupSwap.main.sh
 
 echo ""
 echo "--------------------------------------------------------------------------"
