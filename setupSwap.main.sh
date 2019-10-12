@@ -145,24 +145,24 @@ createSwap() {
         echo "-> The sysctl contains a swappiness entry."
         #do nothing
     else
-        cp /etc/sysctl.conf /etc/sysctl.$sysctlBackupTime
+        cp /etc/sysctl.conf /etc/sysctl.conf.$sysctlBackupTime
         echo "-> The sysctl does not contain a swappiness. Adding an entry."
         #For instance, to set the swappiness to 10
         sysctl vm.swappiness=10
         #This setting will persist until the next reboot. We can set this value automatically at restart by adding the line to our /etc/sysctl.conf file:
-        echo "vm.swappiness=10" >> /etc/sysctl   
+        echo "vm.swappiness=10" >> /etc/sysctl.conf   
     fi
     
     if grep -q "vfs_cache_pressure" /etc/sysctl.conf; then
         echo "-> The sysctl contains a cache pressure entry."
         #do nothing
     else
-        cp /etc/sysctl.conf /etc/sysctl.$sysctlBackupTime
+        cp /etc/sysctl.conf /etc/sysctl.conf.$sysctlBackupTime
         echo "-> The sysctl does not contain a cache pressure entry. Adding an entry."
         #For instance, to set the vfs_cache_pressure to 50
         sysctl vm.vfs_cache_pressure=50
         #This setting will persist until the next reboot. We can set this value automatically at restart by adding the line to our /etc/sysctl.conf file: 
-        echo "vm.vfs_cache_pressure=50" >> /etc/sysctl
+        echo "vm.vfs_cache_pressure=50" >> /etc/sysctl.conf
     fi
     
     echo ""
